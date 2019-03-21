@@ -34,6 +34,10 @@ module Yast
       textdomain "network"
     end
 
+    def move_routes(from, to)
+      Routing.device_routes(from).each { |r| r["device"] = to }
+    end
+
     # Immediately updates device's ifcfg to be usable as bridge port.
     #
     # It mainly setups suitable BOOTPROTO an IP related values
